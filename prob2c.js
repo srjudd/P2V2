@@ -106,9 +106,16 @@ psiResults = {
 }
 
 //my code
-console.log(psiResults.pageStats);
+function totalBytes(psiResults) {
 
-   for (var prop in psiResults.pageStats) {
-  	console.log(prop);
-   		            console.log(psiResults.pageStats[prop])
-       };
+	console.log(psiResults.pageStats);
+		btot = 0;
+		for (var prop in psiResults.pageStats) {
+	   		if (prop.search("Bytes") != -1) {
+	   			btot = btot + Number(psiResults.pageStats[prop]);
+	   		    };
+};
+	console.log(btot);
+}
+
+totalBytes(psiResults);

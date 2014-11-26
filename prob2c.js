@@ -105,17 +105,32 @@ psiResults = {
  }
 }
 
-//my code
-function totalBytes(psiResults) {
+//my code has two functions that operate on the page speed results JSON.
 
-	console.log(psiResults.pageStats);
-		btot = 0;
-		for (var prop in psiResults.pageStats) {
-	   		if (prop.search("Bytes") != -1) {
-	   			btot = btot + Number(psiResults.pageStats[prop]);
-	   		    };
-};
-	console.log(btot);
+//totalBytes looks for the string "Bytes" in page states
+//and sums the Bytes for such entries.
+function totalBytes(results) {
+    var btot = 0;
+    for (var prop in results.pageStats) {
+        if (prop.search("Bytes") != -1) {
+          btot = btot + Number(results.pageStats[prop]);
+            };
+      };
+//console.log(btot);
+return(btot);
 }
 
 totalBytes(psiResults);
+
+//ruleList returns
+function ruleList(results) {
+  var rulesStrings = [];
+  for (var ruleName in results.formattedResults.ruleResults) {
+    var ruleEntry = results.formattedResults.ruleResults[ruleName];
+    rulesStrings.push(ruleEntry.localizedRuleName);
+
+  };
+//  console.log(rulesStrings);
+  return rulesStrings;
+}
+ruleList(psiResults);

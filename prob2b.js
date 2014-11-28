@@ -15,7 +15,7 @@ var moonWalkers = [
 ];
 function alphabetizer(names) {
 
-	}
+
 	for(var name in names)	{
 		names[name] = names[name].trim();
 		//Locate the start of the last name and the end of the fist name;

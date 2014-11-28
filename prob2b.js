@@ -14,9 +14,13 @@ var moonWalkers = [
   "Harrison Schmitt"
 ];
 function alphabetizer(names) {
+
+	}
 	for(var name in names)	{
 		names[name] = names[name].trim();
-		//locate the start of the last name and the end of the fist name; not necessarily the same because could be middle name or initial.
+		//Locate the start of the last name and the end of the fist name;
+		//not necessarily the same because could be middle name or initial.
+		//Note that not accounting for suffixes to last name.
 		var bpt = names[name].lastIndexOf(" ");
 		var bptf = names[name].indexOf(" ");
 		//grab the last name and make sure the case is intitial cap.

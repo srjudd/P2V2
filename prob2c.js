@@ -105,11 +105,12 @@ psiResults = {
  }
 }
 
-//my code has two functions that operate on the page speed results JSON.
+//my code has two major functions that operate on the page speed results JSON.
 
-//totalBytes looks for the string "Bytes" in page states
-//and sums the Bytes for such entries.
+
 function totalBytes(results) {
+    //totalBytes looks for the string "Bytes" in page states
+    //and sums the Bytes for such entries.
     var btot = 0;
     for (var prop in results.pageStats) {
         if (prop.search("Bytes") != -1) {
@@ -122,15 +123,23 @@ return(btot);
 
 totalBytes(psiResults);
 
-//ruleList returns
 function ruleList(results) {
+  //ruleList returns the rule recommendations from the page results JSON.
   var rulesStrings = [];
+  var ruleCt = 0;
+  function noRules() {
+    //If there are no recommendations to iterate through,
+    //noRules can be called to report this result.
+    rulesStrings.push("There are no rule recommendations to report.");
+  }
   for (var ruleName in results.formattedResults.ruleResults) {
     var ruleEntry = results.formattedResults.ruleResults[ruleName];
     rulesStrings.push(ruleEntry.localizedRuleName);
-
+    ruleCt ++;
   };
-//  console.log(rulesStrings);
+  if (ruleCt === 0) {
+    noRules();
+  };
   return rulesStrings;
 }
 ruleList(psiResults);

@@ -115,11 +115,10 @@ function totalBytes(results) {
     for (var prop in results.pageStats) {
         if (prop.search("Bytes") != -1) {
           btot = btot + Number(results.pageStats[prop]);
-            };
-      };
-//console.log(btot);
-return(btot);
-}
+            }
+      }
+  return(btot);
+}//end totalBytes
 
 totalBytes(psiResults);
 
@@ -131,15 +130,15 @@ function ruleList(results) {
     //If there are no recommendations to iterate through,
     //noRules can be called to report this result.
     rulesStrings.push("There are no rule recommendations to report.");
-  }
+  }//end noRules
   for (var ruleName in results.formattedResults.ruleResults) {
     var ruleEntry = results.formattedResults.ruleResults[ruleName];
     rulesStrings.push(ruleEntry.localizedRuleName);
     ruleCt ++;
-  };
+  }
   if (ruleCt === 0) {
     noRules();
-  };
+  }
   return rulesStrings;
-}
+}//end ruleList
 ruleList(psiResults);

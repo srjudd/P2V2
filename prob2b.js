@@ -22,7 +22,7 @@ function alphabetizer(names) {
         var sepNames = [];
 
         function capitalizer(nmStr) {
-            //The apitalizer takes a string of random-case letters and 
+            //The capitalizer takes a string of random-case letters and 
             //returns it with initial caps.
             //It does not accurately handle names such as O'Reilley.
             nmStr = nmStr.substr(0, 1).toUpperCase() + nmStr.substr(1).toLowerCase();
